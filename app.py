@@ -1,5 +1,5 @@
 #encoding: utf-8
-from flask import Flask, redirect, url_for, render_template, session
+from flask import Flask, redirect, url_for, render_template, session, flash
 from flask_wtf import FlaskForm
 from wtforms import PasswordField,SubmitField
 from wtforms.validators import DataRequired,EqualTo
@@ -10,28 +10,28 @@ app.config["SECRET_KEY"]="askjfkl132s"
 #form
 class regisform(FlaskForm):
     # make sure they input something
-    password = "www.lolwaigua.com"
     key = PasswordField(label=u'请输入访问密码：www.lolwaigua.com',validators=[DataRequired(u"不能为空")])
     submit = SubmitField(label=u'提交')
 
-@app.route('/reg',methods=["GET","POST"])
-def reg():
+@app.route('/index',methods=["GET","POST"])
+def index():
     #创建对象
     form = regisform()
+    error = "输入网址错误，请重新输入"
     #判断Form 数据是否满足验证合理
     if form.validate_on_submit():
-        return redirect(url_for("index"))
+        if form.key.data != "www.lolwaigua.com":
+            return render_template("index.html", form=form, error=error)
+        else:
+            return redirect(url_for("func"))
+    return render_template("index.html", form = form)
 
-
-    return render_template("veri.html",form = form)
-
-@app.route('/index')
-def index():
+@app.route('/func')
+def func():
     # stat = session.get("key","")
     key = session.get("key", "")
-    print(key)
     if session.get("key", "") != "www.lolwaigua.com":
-        return redirect(url_for("reg"))
+        return redirect(url_for("func"))
     else:
         return "hello world"
 
