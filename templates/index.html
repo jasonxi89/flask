@@ -1,25 +1,48 @@
-{% from 'bootstrap/form.html' import render_field %}
-{% block content %}
+{#{% from 'bootstrap/form.html' import render_field %}#}
+{##}
+{#    <div class="container">#}
+{#    {% for message in get_flashed_messages() %}#}
+{#        <div class="alert alert-warning">#}
+{#            <button type="button" class="close" data-dismiss="alert">&times;</button>#}
+{#            {{ message }}#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#        {% block page_content %}{% endblock %}#}
+{#    </div>#}
+{##}
+{##}
+{##}
+{#    <form method="post">#}
+{#        {{ form.csrf_token }}#}
+{#       <p> {{ render_field(form.key) }} </p>#}
+{#        {% if form.key.errors %}#}
+{#            {{ form.key.errors }}#}
+{#        {% endif %}#}
+{##}
+{#        {{ render_field(form.submit) }}#}
+{#    </form>#}
+
+{##}
+
+{% from 'bootstrap/form.html' import render_form %}
+
+        {{ bootstrap.load_css() }}
+        {{ bootstrap.load_js() }}
+
     <div class="container">
-    {% for message in get_flashed_messages() %}
-        <div class="alert alert-warning">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ message }}
-        </div>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+{#                <a href="#" class="close" data-dismiss="alert">&times;</a>#}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong> {{ message }}</strong>
+            </div>
         {% endfor %}
-        {% block page_content %}{% endblock %}
     </div>
-{% endblock %}
 
-{% block body %}
-    <form method="post">
-        {{ form.csrf_token }}
-       <p> {{render_field(form.key)}}</p>
-        {% if form.key.errors %}
-            {{ form.key.errors }}
-        {% endif %}
-
-        {{ render_field(form.submit) }}
-    </form>
-{% endblock  %}
-
+  <div class="container">
+  	<div class="row" >
+        <div class="col-md-6 col-md-offset-3">
+            {{ render_form(form,method="post") }}
+        </div>
+    </div>
+  </div>
