@@ -3,9 +3,9 @@ from flask import Flask, redirect, url_for, render_template, session, flash
 from flask_wtf import FlaskForm
 from wtforms import PasswordField,SubmitField
 from wtforms.validators import DataRequired
-# from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 app = Flask(__name__)
-
+bootstrap = Bootstrap(app)
 
 app.config["SECRET_KEY"]="askjfkl132s"
 #form
@@ -22,11 +22,13 @@ def index():
     #判断Form 数据是否满足验证合理
     if form.validate_on_submit():
         if form.key.data != "www.lolwaigua.com":
-            flash("输入网址错误，请重新输入")
-            return render_template("index.html", form=form)
+            flash(u"输入网址错误，请重新输入")
+            print("123")
+            return redirect(url_for("index"))
         else:
             return redirect(url_for("func"))
-    return render_template("index.html", form = form)
+
+    return render_template("/index.html", form = form)
 
 @app.route('/func')
 def func():

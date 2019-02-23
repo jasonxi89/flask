@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-             {% for message in messages %}
-                  <li>{{ message }}</li>
-             {% endfor %}
-        {% endif %}
-    {% endwith %}
+{% from 'bootstrap/form.html' import render_field %}
+{% block content %}
+    <div class="container">
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% block page_content %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block body %}
     <form method="post">
         {{ form.csrf_token }}
-        {{ form.key.label }}
-       <p> {{ form.key }}</p>
+       <p> {{render_field(form.key)}}</p>
         {% if form.key.errors %}
             {{ form.key.errors }}
         {% endif %}
 
-        {{ form.submit }}
+        {{ render_field(form.submit) }}
     </form>
-</body>
-</html>
+{% endblock  %}
+
