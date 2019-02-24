@@ -1,48 +1,36 @@
-{#{% from 'bootstrap/form.html' import render_field %}#}
-{##}
-{#    <div class="container">#}
-{#    {% for message in get_flashed_messages() %}#}
-{#        <div class="alert alert-warning">#}
-{#            <button type="button" class="close" data-dismiss="alert">&times;</button>#}
-{#            {{ message }}#}
-{#        </div>#}
-{#        {% endfor %}#}
-{#        {% block page_content %}{% endblock %}#}
-{#    </div>#}
-{##}
-{##}
-{##}
-{#    <form method="post">#}
-{#        {{ form.csrf_token }}#}
-{#       <p> {{ render_field(form.key) }} </p>#}
-{#        {% if form.key.errors %}#}
-{#            {{ form.key.errors }}#}
-{#        {% endif %}#}
-{##}
-{#        {{ render_field(form.submit) }}#}
-{#    </form>#}
-
-{##}
-
+{#{% extends "bootstrap/base.html" %}#}
 {% from 'bootstrap/form.html' import render_form %}
+{% from 'bootstrap/nav.html' import render_nav_item %}
 
         {{ bootstrap.load_css() }}
         {{ bootstrap.load_js() }}
 
-    <div class="container">
-        {% for message in get_flashed_messages() %}
-            <div class="alert alert-warning">
-{#                <a href="#" class="close" data-dismiss="alert">&times;</a>#}
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong> {{ message }}</strong>
-            </div>
-        {% endfor %}
-    </div>
 
-  <div class="container">
-  	<div class="row" >
-        <div class="col-md-6 col-md-offset-3">
-            {{ render_form(form,method="post") }}
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-nav mr-auto">
+        {{ render_nav_item('func', '首页') }}
+        {{ render_nav_item('index', '缓存制作') }}
+        {{ render_nav_item('index', '英雄名称翻译') }}
     </div>
-  </div>
+</nav>
+
+<div class="container-fluid" id="LG">
+	<div class="row-fluid">
+		<div class="span12">
+			<ul class="nav nav-tabs">
+			</ul>
+			<p class="text-center">
+				<em>欢迎使用 T + 小助手网页版, 目前很多功能正在开发中, 尽请期待ing</em>
+			</p>
+			<p class="text-center">
+				<em>请牢记我们的网址www.lolwaigua.com LOL外挂欢迎你</em>
+			</p>
+			<p class="text-center">
+				<em>我们的国服群638918322</em>
+			</p>
+			<p class="text-center">
+				<em>我们的外服群482768203</em>
+			</p>
+		</div>
+	</div>
+</div>

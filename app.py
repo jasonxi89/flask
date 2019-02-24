@@ -32,20 +32,18 @@ def index():
             session["key"]= "Toirplus"
             return redirect(url_for("func", session = session))
 
-    return render_template("/index.html", form = form, session = session)
+    return render_template("/login.html", form = form, session = session)
+
+
+
+
 
 @app.route('/func')
 def func():
-    # # stat = session.get("key","")
-    # key = session.get("key", "")
-    # if session.get("key") != "www.lolwaigua.com":
-    #     return redirect(url_for("func"))
-    # else:
     print(session.get("key"))
-
     # using section to veri its directed from original page.
     if session.get("key") != "Toirplus":
-        return render_template("/func.html")
+        return render_template("/index.html")
     else:
         return "hello world"
 
