@@ -26,10 +26,11 @@ def index():
     #form
     if form.validate_on_submit():
         if form.key.data != "www.lolwaigua.com":
-            flash(u"输入网址错误，请重新输入")
+            flash(u"输入访问密码错误，请重新输入")
             return redirect(url_for("index"))
         else:
-            return redirect(url_for("func"))
+            session["key"]= "Toirplus"
+            return redirect(url_for("func", session = session))
 
     return render_template("/index.html", form = form, session = session)
 
@@ -40,7 +41,13 @@ def func():
     # if session.get("key") != "www.lolwaigua.com":
     #     return redirect(url_for("func"))
     # else:
-    return "hello world"
+    print(session.get("key"))
+
+    # using section to veri its directed from original page.
+    if session.get("key") != "Toirplus":
+        return render_template("/func.html")
+    else:
+        return "hello world"
 
 
 

@@ -1,0 +1,66 @@
+{#{% extends "bootstrap/base.html" %}#}
+{% from 'bootstrap/form.html' import render_form %}
+{% from 'bootstrap/nav.html' import render_nav_item %}
+
+        {{ bootstrap.load_css() }}
+        {{ bootstrap.load_js() }}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-nav mr-auto">
+        {{ render_nav_item('func', '首页') }}
+        {{ render_nav_item('index', '缓存制作') }}
+        {{ render_nav_item('index', '英雄名称翻译') }}
+    </div>
+</nav>
+
+<div class="container-fluid" id="LG">
+	<div class="row-fluid">
+		<div class="span12">
+			<ul class="nav nav-tabs">
+{#				<li class="active">#}
+{#					<a href="#">首页</a>#}
+{#				</li>#}
+{#				<li class="active">#}
+{#					<a href="#">缓存生成</a>#}
+{#				</li>#}
+{#				<li class="active">#}
+{#					<a href="#">英雄中英对照</a>#}
+{#				</li>#}
+{#				<li class="active">#}
+{#				</li>#}
+
+{#				<li class="dropdown pull-right">#}
+{#					<ul class="dropdown-menu">#}
+{#						<li>#}
+{#							<a href="#">操作</a>#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#">设置栏目</a>#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#">更多设置</a>#}
+{#						</li>#}
+{#						<li class="divider">#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#">分割线</a>#}
+{#						</li>#}
+{#					</ul>#}
+{#				</li>#}
+			</ul>
+			<p class="text-center">
+				<em>欢迎使用 T + 小助手网页版, 目前很多功能正在开发中, 尽请期待ing</em>
+			</p>
+			<p class="text-center">
+				<em>请牢记我们的网址www.lolwaigua.com LOL外挂欢迎你</em>
+			</p>
+			<p class="text-center">
+				<em>我们的国服群638918322</em>
+			</p>
+			<p class="text-center">
+				<em>我们的外服群482768203</em>
+			</p>
+		</div>
+	</div>
+</div>
