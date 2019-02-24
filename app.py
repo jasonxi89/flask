@@ -18,8 +18,8 @@ class regisform(FlaskForm):
 
 
 #inde route
-@app.route('/index',methods=["GET","POST"])
-def index():
+@app.route('/login',methods=["GET","POST"])
+def login():
     #int form class
     form = regisform()
 
@@ -27,25 +27,23 @@ def index():
     if form.validate_on_submit():
         if form.key.data != "www.lolwaigua.com":
             flash(u"输入访问密码错误，请重新输入")
-            return redirect(url_for("index"))
+            return redirect(url_for("login"))
         else:
             session["key"]= "Toirplus"
-            return redirect(url_for("func", session = session))
+            return redirect(url_for("index", session = session))
 
     return render_template("/login.html", form = form, session = session)
 
 
 
 
-
-@app.route('/func')
-def func():
-    print(session.get("key"))
+@app.route('/index')
+def index():
+    # print(session.get("key"))
     # using section to veri its directed from original page.
     if session.get("key") != "Toirplus":
-        return render_template("/index.html")
-    else:
-        return "hello world"
+        redirect(url_for("login"))
+    return render_template("/index.html")
 
 
 
