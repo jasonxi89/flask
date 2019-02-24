@@ -1,0 +1,11 @@
+{% from 'bootstrap/form.html' import render_form %}
+
+        {{ bootstrap.load_css() }}
+        {{ bootstrap.load_js() }}
+  <div class="container">
+  	<div class="row" >
+        <div class="col-md-6 col-md-offset-3">
+            {{ render_form(form,method="post") }}
+        </div>
+    </div>
+  </div>
