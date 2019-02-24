@@ -12,7 +12,7 @@ Finished the Login.html, base.html and index.html with flask_bootstrap. Using cs
 This is a Python - FLask Program. I am tring to make a personal website to generate a txt file with special formate for a software. I will use flask to host it. Although django is more powerful, but i think dont think i will use all the functions. So flask is better for me. 
 
 Used Package:
-Pip3 Install Flask
-Pip3 Install Flask-WTF
-Pip3 Install bootstrap-flask ( not flask-bootstrap cause it is too old )
-pip install flask-sqlalchemy
+Pip3 Install Flask \n
+Pip3 Install Flask-WTF \n
+Pip3 Install bootstrap-flask ( not flask-bootstrap cause it is too old ) \n
+pip install flask-sqlalchemy \n
