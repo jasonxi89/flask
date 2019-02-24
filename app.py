@@ -45,6 +45,10 @@ def index():
         redirect(url_for("login"))
     return render_template("/index.html")
 
+@app.route('/setting')
+def setting():
+    
+
 
 
 
