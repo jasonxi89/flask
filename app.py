@@ -93,13 +93,10 @@ def makefile(customer_setting):
 def string_format(str):
     if not str:
         return {}
-
     dic = str[1:len(str)-1].replace(r"'","").replace(" ","").replace(":","=").split(",")
     new_str = ""
-    print(dic)
     for item in dic:
         new_str = new_str + item + "\n"
-    print(new_str)
     return new_str
 
 
