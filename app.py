@@ -64,7 +64,7 @@ def index():
 class jungle_form(FlaskForm):
     Auto_Smite = RadioField(u'自动惩戒', choices=[('True','是'),('False','否')], default='True')
     Auto_Smite_KS = RadioField(u'自动抢人头', choices=[('True','是'),('False','否')], default='True')
-    Auto_Smite_In_CombO = RadioField(u'连招使用惩戒', choices=[('True','是'),('False','否')], default='True')
+    Auto_Smite_In_Combo = RadioField(u'连招使用惩戒', choices=[('True','是'),('False','否')], default='True')
     Smite_Range = FloatField(u'惩戒使用距离', validators= [NumberRange(1,100)],default=100)
     submit = SubmitField(label=u'提交')
 
@@ -78,6 +78,8 @@ def setting():
     if form.validate_on_submit():
         customer_setting['Auto_Smite'] = form.Auto_Smite.data
         customer_setting['Auto_Smite_KS'] = form.Auto_Smite_KS.data
+        customer_setting['Auto_Smite_In_Combo'] = form.Auto_Smite_In_Combo.data
+        customer_setting['Smite_Range'] = form.Smite_Range.data
         return redirect(url_for('makefile', customer_setting = customer_setting))
     return render_template('/setting.html',form = form)
 
