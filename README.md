@@ -1,4 +1,11 @@
 # Python-Flask Program
+2/26/2019 Update:
+Keep trying to slove the data trans between from forms to making file, because we use session, i am wondering if i could use a dict or something to save the information. Also, could I make a json file to save the items i need to choose? It is much easier to maintaince.
+
+SLOVED: data trans from customer choosen - > makefile
+Need to be done: Finished All the choices. 
+
+
 2/24/2019 Update:
 
 In the beginning , i think use session is a good idea. But after learning , maybe @login_required is better solution. For the information got from form, it is similar like what you got from website when running a web crawler(of course lol), so I need a helper function to cleasn the data.

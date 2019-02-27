@@ -72,25 +72,37 @@ class jungle_form(FlaskForm):
 @app.route('/setting',methods=['GET','POST'])
 # @login_required
 def setting():
+    #load forms from the submit.
     form = jungle_form()
-    session = {}
+    customer_setting = {}
     if form.validate_on_submit():
-        for item in form:
-            print(item)
-        session['Auto_Smite'] = form.Auto_Smite.data
-        return redirect(url_for('makefile',session = session))
+        customer_setting['Auto_Smite'] = form.Auto_Smite.data
+        customer_setting['Auto_Smite_KS'] = form.Auto_Smite_KS.data
+        return redirect(url_for('makefile', customer_setting = customer_setting))
     return render_template('/setting.html',form = form)
 
 
-@app.route('/makefile',methods=['GET','POST'])
-def makefile():
-    for item in session:
-        if item == 'key' or item == 'csrf_token':
-            continue
+@app.route('/makefile/<customer_setting>')
+def makefile(customer_setting):
+    #load the string(customer setting) , and trans it into right format with string_format function + download it.
+    str = string_format(customer_setting)
+    response = make_response(str)
+    response.headers['Content-Disposition'] = 'attachment; filename=AutoLols.ini'
+    return response
 
-        response = make_response(item + '=' + session.get(item))
-    # response.headers['Content-Disposition'] = 'attachment; filename=AutoLols.ini'
-    return "End"
+def string_format(str):
+    if not str:
+        return {}
+
+    dic = str[1:len(str)-1].replace(r"'","").replace(" ","").replace(":","=").split(",")
+    new_str = ""
+    print(dic)
+    for item in dic:
+        new_str = new_str + item + "\n"
+    print(new_str)
+    return new_str
+
+
 
 
 
